@@ -1,0 +1,27 @@
+{
+  "name": "western-aerospace",
+  "version": "1.0.0",
+  "description": "Project 2 Packages",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/western-aerospace/Western-AeroSpace.git"
+  },
+  "author": "Western AeroSpace Cadets",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/western-aerospace/Western-AeroSpace/issues"
+  },
+  "homepage": "https://github.com/western-aerospace/Western-AeroSpace#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "passport": "^0.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
