@@ -11,28 +11,38 @@ var Op = require("sequelize").Op;
 // =============================================================
 module.exports = function(app) {
   // ajax routes for all makes
-  app.get("/api/all", function(req, res) {
+  app.get("/api/allmakes", function(req, res) {
     db.make.findAll({}).then(function(results) {
       res.json(results);
     });
   });
 
+
+    // ajax routes for all models
+    app.get("/api/allmodels", function(req, res) {
+      db.model.findAll({}).then(function(results) {
+        res.json(results);
+      });
+    });
+
   // Get a specific make
   app.get("/api/:make", function(req, res) {
     db.make.findAll({
       where: {
-        title: req.params.make
+        name: req.params.make
       }
     }).then(function(results) {
       res.json(results);
     });
   });
 
+
+
   // Get all models of a specific make
   app.get("/api/model/:model", function(req, res) {
-    db.make.findAll({
+    db.model.findAll({
       where: {
-        model: req.params.model
+        name: req.params.model
       }
     }).then(function(results) {
       res.json(results);
