@@ -55,4 +55,7 @@
  footer.page-footer {
    margin: 0;
  }
+ body {
+  text-align: center;
+}
  

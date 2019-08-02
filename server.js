@@ -1,10 +1,10 @@
-const express = require('require');
+const express = require('express');
 const fs = require('fs');
 const fse = require('fs-extra');
 const path = require('path');
 const exphbs  = require('express-handlebars');
 
-var PORT = process.env || 3000;
+var PORT = process.env.PORT || 3000;
 
 var app = express();
 var router = express.Router();
@@ -28,7 +28,8 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
 
-app.use(routes);
+require("./routes/api-routes")(app);
+require("./routes/html-routes")(app);
 
 db.sequelize.sync().then(function() {
     app.listen(PORT, function() {
