@@ -5,7 +5,7 @@
 // Dependencies
 // =============================================================
 var db = require("../models");
-var Op = require("sequelize").Op;
+// var Op = require("sequelize").Op;
 
 // Routes
 // =============================================================
@@ -49,5 +49,19 @@ module.exports = function(app) {
     });
   });
 
+  // Create a new make
+  app.post("/api/makes", function(req, res) {
+    db.make.create(req.body).then(function(dbMake) {
+      res.json(dbMake);
+    });
+  });
+
+    // Delete an make by id
+    app.delete("/api/makes/:id", function(req, res) {
+      db.make.destroy({ where: { id: req.params.id } }).then(function(dbMake) {
+        res.json(dbMake);
+      });
+    });
+  };
   
-};
+

@@ -12,7 +12,10 @@ var router = express.Router();
 // bring in the models
 var db = require("./models");
 
-// var routes = require("./controllers/....");
+
+
+
+//  var routes = require("./controllers/....");
 
 // Parse application body
 app.use(express.urlencoded({ extended: true }));
@@ -28,8 +31,8 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
 
-require("./routes/api-routes")(app);
-require("./routes/html-routes")(app);
+require("./controllers/api-routes.js")(app);
+require("./controllers/html-routes.js")(app);
 
 db.sequelize.sync().then(function() {
     app.listen(PORT, function() {
