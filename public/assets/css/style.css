@@ -55,3 +55,16 @@ p {
 footer.page-footer {
   margin: 0;
 }
+
+.aircraftButton {
+margin-left: 80px
+}
+
+.logo {
+  margin-top: -18px;
+  margin-left: 600px;
+}
+
+.welcome{
+  margin-top: 145px;
+}
