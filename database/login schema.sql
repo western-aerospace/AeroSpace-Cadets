@@ -1,0 +1,2 @@
+CREATE DATABASE project2_login;
+USE project2_login
