@@ -7,8 +7,9 @@
   <title>Welcome!</title>
 
   <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="/assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+          
   <link href="/assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
 
@@ -53,19 +54,12 @@
             <h5 class="center">Aircraft Make</h5>
             <br>
             <br>
-            <!-- Dropdown Trigger -->
-            <div class="aircraftButton">
-            <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
-
-            <!-- Dropdown Structure -->
-            <ul id='dropdown1' class='dropdown-content'>
-              <li><a href="#!">one</a></li>
-              <li><a href="#!">two</a></li>
-              <li class="divider" tabindex="-1"></li>
-              <li><a href="#!">three</a></li>
-              <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-              <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-            </ul>
+            <div class="input-field col s12">
+              <select id="dropdown1">
+                <option value="" disabled selected>Choose your option</option>
+              </select>
+              <label>Materialize Select</label>
+            </div>
           </div>
 
           </div>
@@ -77,18 +71,11 @@
             <h5 class="center">Aircraft Model</h5>
             <br>
             <br>
-            <div class="aircraftButton">
-              <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
-  
-              <!-- Dropdown Structure -->
-              <ul id='dropdown1' class='dropdown-content'>
-                <li><a href="#!">one</a></li>
-                <li><a href="#!">two</a></li>
-                <li class="divider" tabindex="-1"></li>
-                <li><a href="#!">three</a></li>
-                <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-                <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-              </ul>
+            <div class="input-field col s12">
+              <select id="dropdown2">
+                <option value="" disabled selected>Choose your option</option>
+              </select>
+              <label>Materialize Select</label>
             </div>
           </div>
         </div>
@@ -126,6 +113,9 @@
 
     </div>
   </div>
+
+
+<div id = "makesList"></div>
 
 
   <div class="parallax-container valign-wrapper">
@@ -180,9 +170,13 @@
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="/assets/js/materialize.js"></script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="/assets/js/init.js"></script>
   <script type="text/javascript" src="/assets/js/members.js"></script>
+  <script type="text/javascript" src="/assets/js/script.js"></script>
+ 
 
 </body>
 
