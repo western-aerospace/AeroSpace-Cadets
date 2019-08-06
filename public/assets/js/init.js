@@ -1,6 +1,8 @@
 (function($){
   $(function(){
 
+
+    $('select').formSelect();
     $('.sidenav').sidenav();
     $('.parallax').parallax();
 

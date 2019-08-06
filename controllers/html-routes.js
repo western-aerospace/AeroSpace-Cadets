@@ -1,22 +1,9 @@
-// var db = require("../models");
+ var db = require("../models");
 
-// module.exports = function(app) {
-//   // Load index page
+
  
-//   // Load make page and pass in an make by id
-//   app.get("/make/:id", function(req, res) {
-//     db.make.findOne({ where: { id: req.params.id } }).then(function(dbMake) {
-      
-//       console.log(dbMake);
-//     });
-//   });
 
-//   // Render 404 page for any unmatched routes
-//   app.get("*", function(req, res) {
-    
-//     console.log("404");
-//   });
-// };
+
 
 
 
@@ -32,63 +19,6 @@ var express = require("express");
 var router = express.Router();
 var make = require("../models/make.js");
 var model = require("../models/model.js");
-
-// // Create all our routes and set up logic within those routes where required.
-// router.get("/", function(req, res) {
-//   make.all(function(data) {
-//     var hbsObject = {
-//       makes: data
-//     };
-//     console.log(hbsObject);
-//     res.render("index", hbsObject);
-//   });
-// });
-
-// router.post("/api/makes", function(req, res) {
-//   make.create([
-//     "name"
-//   ], [
-//     req.body.name
-//   ], function(result) {
-//     // Send back the ID of the new quote
-//     res.json({ id: result.insertId });
-//   });
-// });
-
-// router.put("/api/makes/:id", function(req, res) {
-//   var condition = "id = " + req.params.id;
-
-//   console.log("condition", condition);
-
-//   make.update({
-//     name: req.body.name
-//   }, condition, function(result) {
-//     if (result.changedRows == 0) {
-//       // If no rows were changed, then the ID must not exist, so 404
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
-//   });
-// });
-
-// router.delete("/api/makes/:id", function(req, res) {
-//   var id = parseInt(req.params.id);
-
-//   make.delete(id, function(result) {
-//     console.log(result);
-//     if (result.affectedRows == 0) {
-//       // If no rows were changed, then the ID must not exist, so 404
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
-//   });
-//   res.status(200).end();
-// });
-
-// // Export routes for server.js to use.
-// module.exports = router;
 
 
 
@@ -115,5 +45,17 @@ module.exports = function(app) {
     console.log("all");
   });
 
-  
+   // Load make page and pass in an make by id
+   app.get("/make/:id", function(req, res) {
+    db.make.findOne({ where: { id: req.params.id } }).then(function(dbMake) {
+      // res.sendFile(path.join(__dirname, "../public/")
+      console.log(dbMake);
+    });
+  });
+
+    // Render 404 page for any unmatched routes
+  app.get("*", function(req, res) {
+    
+    console.log("404");
+  });
 };
