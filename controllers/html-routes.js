@@ -1,10 +1,26 @@
-// *********************************************************************************
-// html-routes.js - this file offers a set of routes for sending users to the various html pages
-// *********************************************************************************
+ var db = require("../models");
 
-// Dependencies
-// =============================================================
-var path = require("path");
+
+ 
+
+
+
+
+
+
+// // *********************************************************************************
+// // html-routes.js - this file offers a set of routes for sending users to the various html pages
+// // *********************************************************************************
+
+// // Dependencies
+// // =============================================================
+ var path = require("path");
+var express = require("express");
+var router = express.Router();
+var make = require("../models/make.js");
+var model = require("../models/model.js");
+
+
 
 // Routes
 // =============================================================
@@ -14,21 +30,32 @@ module.exports = function(app) {
 
   // index route loads view.html
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/blog.html"));
+    res.sendFile(path.join(__dirname, "../public/view.html"));
   });
 
-  // cms route loads cms.html
-  app.get("/cms", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/cms.html"));
+  // add route loads the add.html page, where users can enter new books to the db
+  app.get("/add", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/add.html"));
+    console.log("add");
   });
 
-  // blog route loads blog.html
-  app.get("/blog", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/blog.html"));
+  // all route loads the all.html page, where all books in the db are displayed
+  app.get("/all", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/all.html"));
+    console.log("all");
   });
 
-  app.get("/authors", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/author-manager.html"));
+   // Load make page and pass in an make by id
+   app.get("/make/:id", function(req, res) {
+    db.make.findOne({ where: { id: req.params.id } }).then(function(dbMake) {
+      // res.sendFile(path.join(__dirname, "../public/")
+      console.log(dbMake);
+    });
   });
 
+    // Render 404 page for any unmatched routes
+  app.get("*", function(req, res) {
+    
+    console.log("404");
+  });
 };
