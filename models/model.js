@@ -1,16 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
   var model = sequelize.define("model", {
-    title: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
-    },
-    body: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      len: [1]
     }
   });
 
