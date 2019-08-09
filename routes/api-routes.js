@@ -80,6 +80,23 @@ module.exports = function(app) {
     }
   });
 
+
+  app.post("/api/submit", function(req, res) {
+    console.log(req.body);
+    db.PlaneInput.create({
+      serial: req.body.serial,
+      make: req.body.make,
+      model: req.body.model
+    }).then(function() {
+      res.redirect(307, "/members");
+    }).catch(function(err) {
+      console.log(err);
+      res.json(err);
+      // res.status(422).json(err.errors[0].message);
+    });
+  });
+
+
   // ajax routes for all makes
   app.get("/api/allmakes", function(req, res) {
     db.make.findAll({}).then(function(results) {
