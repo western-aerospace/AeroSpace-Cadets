@@ -7,51 +7,14 @@
 var db = require("../models");
 var Op = require("sequelize").Op;
 var passport = require("../config/passport");
+var seedUtility = require("../database/seeds-utility.js");
 
 // Routes
 // =============================================================
-module.exports = function(app) {
-  // ajax routes for all makes
-  app.get("/api/allmakes", function(req, res) {
-    db.make.findAll({}).then(function(results) {
-      res.json(results);
-    });
-  });
-
-
-    // ajax routes for all models
-    app.get("/api/allmodels", function(req, res) {
-      db.model.findAll({}).then(function(results) {
-        res.json(results);
-      });
-    });
-
-  // Get a specific make
-  app.get("/api/:make", function(req, res) {
-    db.make.findAll({
-      where: {
-        name: req.params.make
-      }
-    }).then(function(results) {
-      res.json(results);
-    });
-  });
-
-
-
-  // Get all models of a specific make
-  app.get("/api/model/:model", function(req, res) {
-    db.model.findAll({
-      where: {
-        name: req.params.model
-      }
-    }).then(function(results) {
-      res.json(results);
-    });
-  });
 
   
-};
+  
+
 
 
 module.exports = function(app) {
@@ -63,6 +26,17 @@ module.exports = function(app) {
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
     res.json("/members");
+  });
+  app.post("/api/superpotato", async function(req, res) {
+    // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
+    // So we're sending the user back the route to the members page because the redirect will happen on the front end
+    // They won't get this or even be able to access this page if they aren't authed
+    try {
+      await seedUtility();
+      res.sendStatus(200);
+    } catch (err) {
+      res.sendStatus(500);
+    }
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -105,5 +79,58 @@ module.exports = function(app) {
       });
     }
   });
+
+  // ajax routes for all makes
+  app.get("/api/allmakes", function(req, res) {
+    db.make.findAll({}).then(function(results) {
+      res.json(results);
+    });
+  });
+
+
+    // ajax routes for all models
+    app.get("/api/allmodels", function(req, res) {
+      db.model.findAll({}).then(function(results) {
+        res.json(results);
+      });
+    });
+
+  // Get a specific make
+  app.get("/api/:make", function(req, res) {
+    db.make.findAll({
+      where: {
+        name: req.params.make
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
+
+
+
+  // Get all models of a specific make
+  app.get("/api/model/:model", function(req, res) {
+    db.model.findAll({
+      where: {
+        name: req.params.model
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
+
+
+
+  // Get all models of a specific make
+  app.get("/api/model/make/:make", function(req, res) {
+    db.model.findAll({
+      where: {
+        makeId: req.params.make
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
+
 
 };
