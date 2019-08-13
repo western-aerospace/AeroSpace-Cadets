@@ -8,7 +8,7 @@ var db = require("../models");
 var Op = require("sequelize").Op;
 var passport = require("../config/passport");
 var seedUtility = require("../database/seeds-utility.js");
-
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 // Routes
 // =============================================================
 
@@ -81,18 +81,24 @@ module.exports = function(app) {
   });
 
 
-  app.post("/api/submit", function(req, res) {
+  app.post("/api/submit", isAuthenticated, function(req, res) {
     console.log(req.body);
     db.PlaneInput.create({
       serial: req.body.serial,
       make: req.body.make,
       model: req.body.model
     }).then(function() {
-      res.redirect(307, "/members");
+      res.redirect(307, "/memberData");
     }).catch(function(err) {
       console.log(err);
       res.json(err);
       // res.status(422).json(err.errors[0].message);
+    });
+  });
+
+  app.get("/api/userPlane", function(req, res) {
+    db.PlaneInput.findAll({}).then(function(results) {
+      res.json(results);
     });
   });
 

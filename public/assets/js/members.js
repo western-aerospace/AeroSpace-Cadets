@@ -32,7 +32,8 @@ $(document).ready(function() {
   // When the signup button is clicked, we validate the make and model are not blank
   PlaneInput.on("submit", function(event) {
     event.preventDefault();
-    var userData = {
+    
+    var planeData = {
       make: makeInput.val().trim(),
       model: modelInput.val().trim(),
       serial: serialInput.val().trim(),
@@ -41,11 +42,11 @@ $(document).ready(function() {
     console.log(makeInput)
     
 
-    if (!userData.make || !userData.model || !userData.serial) {
+    if (!planeData.make || !planeData.model || !planeData.serial) {
       return;
     }
-    // If we have an make and model, run the signUpUser function
-    signUpUser(userData.make, userData.model, userData.serial, userData.lName);
+    // If we have an make and model, run the signUpplane function
+    PlaneInputUser(planeData.make, planeData.model, planeData.serial,);
     makeInput.val("");
     modelInput.val("");
     serialInput.val("");
@@ -54,13 +55,13 @@ $(document).ready(function() {
 
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
-  function signUpUser(make, model, serial) {
+  function PlaneInputUser(make, model, serial) {
     $.post("/api/submit", {
       make: make,
       model: model,
       serial : serial,
     }).then(function(data) {
-      window.location.replace("/members");
+      window.location.replace("/memberData");
       // If there's an error, handle it by throwing up a bootstrap alert
     }).catch(handleLoginErr);
   }
@@ -70,3 +71,16 @@ $(document).ready(function() {
     $("#alert").fadeIn(500);
   }
 });
+
+function displayPlaneInput() {
+  var queryURL = "/api/userPlane"
+
+  $.ajax({
+      url: queryURL,
+      method: "GET"
+  }).then(function (response) {
+console.log(response)
+$("#userPlaneData").append(response)
+  });
+}
+displayPlaneInput();
