@@ -8,7 +8,7 @@
 
 nav ul a,
 nav .brand-logo {
-  color: #444;
+  color:white;
 }
 
 p {
@@ -57,9 +57,20 @@ footer.page-footer {
 }
 
 .aircraftButton {
-margin-left: 80px
+  margin-left: 50px;
+  margin-right: 40px;
+  margin-top: -15px;
 }
 
+.aircraftSerial{
+  margin-left: 5px;
+  margin-right: -81px;
+  margin-top: 22px;
+}
+.serialButton{
+  margin-top: -42px;
+  margin-left: 165px;
+}
 .logo {
   margin-top: -18px;
   margin-left: 600px;
@@ -70,4 +81,10 @@ margin-left: 80px
   margin-left: -180px;
   margin-top: -10px;
   color: black
+}
+.memberHead{
+  text-align: center
+}
+.someButtons{
+  margin-left: 310px
 }

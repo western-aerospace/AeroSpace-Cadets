@@ -8,23 +8,27 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="/assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
   <link href="/assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
 
 <body>
 
 
-    <nav>
-        <div class="nav-wrapper teal">
-          <a href="#" class="brand-logo"><div class="logo"><img src="/assets/img/logo.png" alt="logo" height="100px" ></div></a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="sass.html"></a></li>
-            <li><a href="badges.html"></a></li>
-            <li><a href="/logout">Logout</a></li>
-          </ul>
-        </div>
-      </nav>
+  <nav>
+    <div class="nav-wrapper teal">
+      <a href="/members" class="brand-logo">
+        <div class="logo"><img src="/assets/img/logo.png" alt="logo" height="100px"></div>
+      </a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/memberData">Your Planes</a></li>
+        <li><a href="/allData">All Planes</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
 
 
   <div id="index-banner" class="parallax-container">
@@ -32,8 +36,8 @@
       <div class="container">
         <br><br>
         <div class="welcome">
-        <p>Welcome <span class="member-name"></span></p>
-      </div>
+          <p>Welcome <span class="member-name"></span></p>
+        </div>
         <br><br>
 
       </div>
@@ -45,6 +49,7 @@
   <div class="container">
     <div class="section">
 
+      <form class="PlaneInput">
       <!--   Icon Section   -->
       <div class="row">
         <div class="col s12 m4">
@@ -53,20 +58,12 @@
             <h5 class="center">Aircraft Make</h5>
             <br>
             <br>
-            <!-- Dropdown Trigger -->
-            <div class="aircraftButton">
-            <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
-
-            <!-- Dropdown Structure -->
-            <ul id='dropdown1' class='dropdown-content'>
-              <li><a href="#!">one</a></li>
-              <li><a href="#!">two</a></li>
-              <li class="divider" tabindex="-1"></li>
-              <li><a href="#!">three</a></li>
-              <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-              <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-            </ul>
-          </div>
+              <div class="aircraftButton">
+                <select id="dropdown1">
+                  <option value="" disabled selected>Choose your option</option>
+                </select>
+                <label>Make</label>
+              </div>
 
           </div>
         </div>
@@ -78,17 +75,10 @@
             <br>
             <br>
             <div class="aircraftButton">
-              <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
-  
-              <!-- Dropdown Structure -->
-              <ul id='dropdown1' class='dropdown-content'>
-                <li><a href="#!">one</a></li>
-                <li><a href="#!">two</a></li>
-                <li class="divider" tabindex="-1"></li>
-                <li><a href="#!">three</a></li>
-                <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-                <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-              </ul>
+              <select id="dropdown2">
+                <option value="" disabled selected>Choose your option</option>
+              </select>
+              <label>Model</label>
             </div>
           </div>
         </div>
@@ -98,19 +88,30 @@
             <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
             <h5 class="center">Aircraft Serial Number #</h5>
 
-            <div class="aircraftButton">
-            <div class="row">
-              <div class="input-field col s6">
-                <input value="" id="serialNumber" type="text" class="validate">
-                <label class="active" for="serialNumber">Serial Number</label>
-                <a class="waves-effect waves-light btn">Submit</a>
-              </div>
+            <div class="aircraftSerial">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input value="" id="serialNumber" type="text" class="validate">
+                  <label class="active" for="serialNumber">Serial Number</label>
+                  <div class="serialButton">
+                  <button href="/memberData" type="submit"  class="waves-effect waves-light btn">Submit</button>
+                  </div>
+                </div>
               </div>
             </div>
-            
+
 
           </div>
         </div>
+
+      </form>
+
+      <div class="row">
+        <div class="someButtons">
+        <button onclick="location.href = '/memberData';" id="allPlanes"  class="waves-effect waves-light btn">View Your Planes</button>
+        <button onclick="location.href = '/allData';" id="allPlanes"  class="waves-effect waves-light btn">View All Planes</button>
+      </div>
+      </div>
       </div>
 
     </div>
@@ -119,13 +120,19 @@
 
 
 
+
+
+
   <div class="container">
     <div class="section">
 
-  
+
 
     </div>
   </div>
+
+
+  <div id="makesList"></div>
 
 
   <div class="parallax-container valign-wrapper">
@@ -140,36 +147,6 @@
   </div>
 
   <footer class="page-footer teal">
-    <!-- <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our
-            full time job. Any amount would help support and continue development on this project and is greatly
-            appreciated.</p>
-
-
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-      </div>
-    </div> -->
     <div class="footer-copyright">
       <div class="container">
         Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
@@ -180,9 +157,13 @@
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="/assets/js/materialize.js"></script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="/assets/js/init.js"></script>
   <script type="text/javascript" src="/assets/js/members.js"></script>
+  <script type="text/javascript" src="/assets/js/script.js"></script>
+
 
 </body>
 
