@@ -17,5 +17,15 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
       },
     })
+
+    PlaneInput.associate = function(db) {
+      // We're saying that a model should belong to an make
+      // A model can't be created without an make due to the foreign key constraint
+      PlaneInput.belongsTo(db.User, {
+        foreignKey: {
+          allowNull: false
+        }
+      });
+    };
 return PlaneInput
 }

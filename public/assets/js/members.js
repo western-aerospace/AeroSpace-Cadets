@@ -72,15 +72,3 @@ $(document).ready(function() {
   }
 });
 
-function displayPlaneInput() {
-  var queryURL = "/api/userPlane"
-
-  $.ajax({
-      url: queryURL,
-      method: "GET"
-  }).then(function (response) {
-console.log(response)
-$("#userPlaneData").append(response)
-  });
-}
-displayPlaneInput();

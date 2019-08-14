@@ -86,9 +86,10 @@ module.exports = function(app) {
     db.PlaneInput.create({
       serial: req.body.serial,
       make: req.body.make,
-      model: req.body.model
+      model: req.body.model,
+      UserId: req.user.id
     }).then(function() {
-      res.redirect(307, "/memberData");
+      res.json("/memberData");
     }).catch(function(err) {
       console.log(err);
       res.json(err);
@@ -96,11 +97,25 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/userPlane", function(req, res) {
-    db.PlaneInput.findAll({}).then(function(results) {
+  app.get("/api/allPlaneData", isAuthenticated, function(req, res) {
+    db.PlaneInput.findAll({
+
+    }).then(function(results) {
       res.json(results);
     });
   });
+
+  app.get("/api/userPlane", isAuthenticated, function(req, res) {
+    db.PlaneInput.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
+
+
 
 
   // ajax routes for all makes

@@ -28,8 +28,11 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../views/members.html"));
   });
 
-  app.get("/memberData", function(req, res) {
+  app.get("/memberData", isAuthenticated, function(req, res) {
     res.sendFile(path.join(__dirname, "../views/memberData.html"));
   });
 
+  app.get("/allData", function(req, res) {
+    res.sendFile(path.join(__dirname, "../views/allData.html"));
+  });
 };

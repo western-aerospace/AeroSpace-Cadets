@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome!</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link href="/assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body>
+
+
+    <nav>
+        <div class="nav-wrapper teal">
+            <a href="/members" class="brand-logo">
+                <div class="logo"><img src="/assets/img/logo.png" alt="logo" height="100px"></div>
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/memberData">Your Planes</a></li>
+                <li><a href="/allData">All Planes</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <div id="index-banner" class="parallax-container">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <br><br>
+                <div class="welcome">
+
+                </div>
+                <br><br>
+
+            </div>
+        </div>
+        <div class="parallax"><img src="/assets/img/aero.jpg" alt="Unsplashed background img 1"></div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="section">
+
+            <h1 class="memberHead">All Planes</h1>
+            <hr>
+            <div id="userPlaneData">
+            </div>
+            <button onclick="location.href = '/memberData';" id="allPlanes" class="waves-effect waves-light btn">View
+                Your Planes</button>
+            <button onclick="location.href = '/members';" id="allPlanes"
+                class="waves-effect waves-light btn">Home</button>
+        </div>
+    </div>
+
+
+
+
+    <footer class="page-footer teal">
+        <div class="footer-copyright">
+            <div class="container">
+                Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/assets/js/init.js"></script>
+    <script type="text/javascript" src="/assets/js/allData.js"></script>
+    <script type="text/javascript" src="/assets/js/script.js"></script>
+
+
+</body>
+
+</html>

@@ -4,8 +4,10 @@
   "description": "Project 2 Packages",
   "main": "server.js",
   "scripts": {
-    "start": "node index.html",
-    "test": "jest --watchALL"
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "test": "jest --watchALL",
+    "seed": "node database/seeds.js"
   },
   "repository": {
     "type": "git",
