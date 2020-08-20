@@ -32,7 +32,7 @@
     "bcrypt-nodejs": "0.0.3"
   },
   "devDependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "chai": "^4.2.0",
     "handlebars-helper-css": "^0.1.0",
     "jest": "^24.8.0",
